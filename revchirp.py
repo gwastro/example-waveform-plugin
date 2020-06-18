@@ -13,7 +13,7 @@ def reverse_chirp_fd(newparam=0.0, **kwds):
         kwds.pop("approximant")
     hp, hc = get_fd_waveform(approximant="IMRPhenomD", **kwds)
 
-    return hp*1.0j, hc*1.0j + newparam
+    return hp.conj(), hc.conj() + newparam
 
 def reverse_chirp_td(**kwds):
     import numpy
@@ -23,5 +23,5 @@ def reverse_chirp_td(**kwds):
         kwds.pop("approximant")
     hp, hc = get_td_waveform(approximant="IMRPhenomD", **kwds)
 
-    return ((hp.to_frequencyseries()*1.0j).to_timeseries(),
-           (hp.to_frequencyseries()*1.0j).to_timeseries())
+    return (hp.to_frequencyseries().conj().to_timeseries(),
+            hp.to_frequencyseries().conj().to_timeseries())
