@@ -6,6 +6,12 @@
 # For example purposes only of how to advertise a waveform model to PyCBC
 # Function should take kwargs only, and must accept abitrary kwargs.
 # 'newparam' is an example of adding a new argument.
+
+# By convention, parameter names should try to match those in 
+# https://github.com/gwastro/pycbc/blob/master/pycbc/waveform/parameters.py#L152
+# where applicable (i.e. mass1 should be used rather than m1 to avoid confusion
+# accross different models). 
+
 def reverse_chirp_fd(newparam=0.0, **kwds):
     from pycbc.waveform import get_fd_waveform
 
